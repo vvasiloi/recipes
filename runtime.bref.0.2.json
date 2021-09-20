@@ -1,0 +1,46 @@
+{
+    "locks": {
+        "runtime/bref": {
+            "version": "0.2",
+            "recipe": {
+                "repo": "0.2",
+                "branch": "master",
+                "version": "0.2",
+                "ref": "689d92e1c9f74915e8ae93d0d8806377d36d0cc8"
+            }
+        }
+    },
+    "manifests": {
+        "runtime/bref": {
+            "repository": "github.com/symfony/recipes",
+            "package": "runtime/bref",
+            "version": "0.2",
+            "manifest": {
+                "copy-from-recipe": {
+                    "serverless.yaml": "serverless.yml",
+                    "bootstrap": "bootstrap"
+                },
+                "gitignore": [
+                    "/.serverless/"
+                ],
+                "aliases": [
+                    "bref"
+                ]
+            },
+            "files": {
+                "serverless.yaml": {
+                    "contents": "# Read the documentation at https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml/\nservice: my-symfony-app\nconfigValidationMode: error\nuseDotenv: true\n\nprovider:\n    name: aws\n    # The AWS region in which to deploy (us-east-1 is the default)\n    region: us-east-1\n    # The stage of the application, e.g. dev, production, staging\u2026 ('dev' is the default)\n    stage: prod\n    runtime: provided.al2\n    environment:\n        # Symfony environment variables\n        APP_ENV: prod\n        APP_RUNTIME: Runtime\\Bref\\Runtime\n        BREF_LOOP_MAX: 1 # Increase to keep the Lambda process alive between requests\n        # SYMFONY_DECRYPTION_SECRET: ${ssm:/my-symfony-app/prod-decrypt-private-key}\n\nplugins:\n    - ./vendor/bref/bref\n\nfunctions:\n    # This function runs the Symfony website/API\n    web:\n        handler: public/index.php\n        timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)\n        layers:\n            - ${bref:layer.php-80}\n        events:\n            - httpApi: '*'\n\n    # This function let us run console commands in Lambda\n    console:\n        handler: bin/console\n        timeout: 120 # in seconds\n        layers:\n            - ${bref:layer.php-80}\n\npackage:\n    patterns:\n        # Excluded files and folders for deployment\n        - '!assets/**'\n        - '!node_modules/**'\n        - '!public/build/**'\n        - '!tests/**'\n        - '!var/**'\n        # If you want to include files and folders that are part of excluded folders,\n        # add them at the end\n        - 'var/cache/prod/**'\n        - 'public/build/entrypoints.json'\n        - 'public/build/manifest.json'\n",
+                    "executable": false,
+                    "encoding": ""
+                },
+                "bootstrap": {
+                    "contents": "#!/bin/sh\n\n#\n# Keep this file in the application's root or install bref/extra-php-extensions.\n# See https://github.com/php-runtime/bref\n#\n\n# Fail on error\nset -e\n\nLAMBDA_ARGV=(${_HANDLER//:/ })\n\nwhile true\ndo\n    # We redirect stderr to stdout so that everything\n    # written on the output ends up in Cloudwatch automatically\n    /opt/bin/php \"${LAMBDA_ARGV[0]}\" 2>&1\ndone\n",
+                    "executable": false,
+                    "encoding": ""
+                }
+            },
+            "origin": "runtime/bref:0.2@github.com/symfony/recipes:master",
+            "is_contrib": false
+        }
+    }
+}
