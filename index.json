@@ -1,0 +1,19 @@
+{
+    "aliases": {
+        "engagespot-notifier": "symfony/engagespot-notifier",
+        "engagespotnotifier": "symfony/engagespot-notifier"
+    },
+    "recipes": {
+        "symfony/engagespot-notifier": [
+            "5.4"
+        ]
+    },
+    "versions": [],
+    "branch": "master",
+    "is_contrib": false,
+    "_links": {
+        "repository": "github.com/symfony/recipes",
+        "origin_template": "{package}:{version}@github.com/symfony/recipes:master",
+        "recipe_template": "https://raw.githubusercontent.com/symfony/recipes/flex/pull-1028/{package_dotted}.{version}.json"
+    }
+}
