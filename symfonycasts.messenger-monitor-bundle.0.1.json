@@ -1,0 +1,48 @@
+{
+    "manifests": {
+        "symfonycasts/messenger-monitor-bundle": {
+            "manifest": {
+                "bundles": {
+                    "SymfonyCasts\\MessengerMonitorBundle\\SymfonyCastsMessengerMonitorBundle": [
+                        "all"
+                    ]
+                },
+                "composer-scripts": {
+                    "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                },
+                "post-install-output": [
+                    " * Messenger monitor bundle successfully installed!",
+                    "   Please don't forget to generate the table by running `doctrine:schema:update` or by creating a doctrine migration.",
+                    "",
+                    "   You can access messenger monitor's dashboard from the url `/messenger-monitor`.",
+                    "   Don't forget to add role `ROLE_ADMIN_MESSENGER` to your admin user."
+                ]
+            },
+            "files": {
+                "config/packages/symfonycasts_messenger_monitor.yaml": {
+                    "contents": [
+                        "symfonycasts_messenger_monitor:",
+                        "    doctrine:",
+                        "        table: messenger_monitor",
+                        "        connection: default",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/symfonycasts_messenger_monitor.yaml": {
+                    "contents": [
+                        "messenger_monitor:",
+                        "    resource: '@SymfonyCastsMessengerMonitorBundle/Resources/config/routing.xml'",
+                        "    prefix: /messenger-monitor",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "3aae83f3c1bc7a8112b841c8fd23e888954f1d91"
+        }
+    }
+}
