@@ -1,0 +1,20 @@
+{
+    "aliases": {
+        "sendberry-notifier": "symfony/sendberry-notifier",
+        "sendberrynotifier": "symfony/sendberry-notifier"
+    },
+    "recipes": {
+        "symfony/sendberry-notifier": [
+            "6.1"
+        ]
+    },
+    "versions": [],
+    "branch": "master",
+    "is_contrib": false,
+    "_links": {
+        "repository": "github.com/symfony/recipes",
+        "origin_template": "{package}:{version}@github.com/symfony/recipes:master",
+        "recipe_template": "https://raw.githubusercontent.com/symfony/recipes/flex/pull-1054/{package_dotted}.{version}.json",
+        "archived_recipes_template": "https://raw.githubusercontent.com/symfony/recipes/flex/pull-1054/archived/{package_dotted}/{ref}.json"
+    }
+}
