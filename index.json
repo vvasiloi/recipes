@@ -1,0 +1,41 @@
+{
+    "aliases": {
+        "alice": "hautelook/alice-bundle",
+        "validation": "symfony/validator",
+        "validator": "symfony/validator",
+        "web-profiler-bundle": "symfony/web-profiler-bundle",
+        "webprofilerbundle": "symfony/web-profiler-bundle"
+    },
+    "recipes": {
+        "hautelook/alice-bundle": [
+            "2.1",
+            "2.2"
+        ],
+        "nelmio/alice": [
+            "3.2",
+            "3.3"
+        ],
+        "symfony/validator": [
+            "4.1",
+            "4.3",
+            "5.3"
+        ],
+        "symfony/web-profiler-bundle": [
+            "3.3",
+            "5.3"
+        ],
+        "zenstruck/foundry": [
+            "1.9",
+            "1.10"
+        ]
+    },
+    "versions": [],
+    "branch": "master",
+    "is_contrib": false,
+    "_links": {
+        "repository": "github.com/symfony/recipes",
+        "origin_template": "{package}:{version}@github.com/symfony/recipes:master",
+        "recipe_template": "https://raw.githubusercontent.com/symfony/recipes/flex/pull-1058/{package_dotted}.{version}.json",
+        "archived_recipes_template": "https://raw.githubusercontent.com/symfony/recipes/flex/pull-1058/archived/{package_dotted}/{ref}.json"
+    }
+}
