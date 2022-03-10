@@ -1,0 +1,16 @@
+{
+    "aliases": [],
+    "recipes": [],
+    "recipe-conflicts": [],
+    "versions": [],
+    "branch": "master",
+    "is_contrib": false,
+    "_links": {
+        "repository": "github.com/vvasiloi/recipes",
+        "origin_template": "{package}:{version}@github.com/vvasiloi/recipes:master",
+        "recipe_template": "https://raw.githubusercontent.com/vvasiloi/recipes/flex/pull-2/{package_dotted}.{version}.json",
+        "recipe_template_relative": "{package_dotted}.{version}.json",
+        "archived_recipes_template": "https://raw.githubusercontent.com/vvasiloi/recipes/flex/pull-2/archived/{package_dotted}/{ref}.json",
+        "archived_recipes_template_relative": "archived/{package_dotted}/{ref}.json"
+    }
+}
